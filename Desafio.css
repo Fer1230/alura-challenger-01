@@ -1,0 +1,66 @@
+header{
+    color: blue;
+    text-align: center;
+    margin: 10px;
+}
+
+html, body{
+    background-color:white;
+    color: black;
+}
+
+form{
+    margin: 50px;
+}
+
+form input, form button{
+    display: block;
+    font-size: 20px;
+    margin: 0 0 10px;
+}
+
+.input-desencriptar{
+    width: 940px;
+    padding: 50px;
+    border-radius: 15px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.input-incriptar{
+    display: block;
+    margin: 15px, 15px, 15px ;
+    padding: 130px 15px;
+    width: 50%;
+}
+
+.bot-incriptar{
+    width: 30%;
+    padding: 15px 0;
+    font-weight: bold;
+    color: white;
+    background: blue;
+    border-radius: 10px;
+    transition: 1s all;
+    cursor: pointer;
+}
+
+.bot-copiar{
+    width: 30%;
+    padding: 15px 0;
+    font-weight: bold;
+    color: white;
+    background: blue;
+    border-radius: 10px;
+}
+
+footer{
+    text-align: center;
+}
+
+.copyright{
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 10px;
+}

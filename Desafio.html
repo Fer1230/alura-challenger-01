@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+     <meta charset = "UTF-8">
+     <title>Encriptador Y Desencriptador</title>
+     <link rel="stylesheet" href="desafio.css">
+</head>
+
+<body>
+      <header>          
+            <h1 class="titulocenter">Encriptador Y Desencriptador Ferch</h1> 
+      </header>
+      
+      <main>
+            <form id = "myForm">
+
+            <input type="text" class="input-incriptar" required placeholder="texto o palabra" id="entrada">
+                  <button class="bot-incriptar" id="btnEncriptar"> Encriptar </button>
+
+            <input type="text" class="input-incriptar" required placeholder="texto o palabra" id="salida">
+                  <button class="bot-incriptar" id="btnSalida"> Desencriptar </button>
+     
+                  <button id="btnCopiar" class="bot-copiar">Copiar Texto</button>
+            
+            </form>
+
+            <script>
+                  // elementos
+                  var entrada = document.getElementById('entrada');
+                  var btnEncriptar = document.getElementById('btnEncriptar');
+                  var salida = document.getElementById("salida");
+                  var btnSalida =document.getElementById("btnSalida");
+                  var btnCopiar=document.getElementById("btnCopiar");
+
+                 // eventos
+                  btnEncriptar.addEventListener("click",() => {
+                        if (entrada.value === "") {
+                              alert("poner texto");
+                        } else {
+                              var texto = entrada.value;
+                              console.log("texto ", texto);
+                              var textoCifrado = cambiarVocal(texto);
+                              console.log("texto cifrado ", textoCifrado);
+                              salida.value = textoCifrado;
+                              entrada.value = "";
+                        }
+                  });
+
+                  btnSalida.addEventListener("click",() => {
+                        if (salida.value === "") {
+                              alert("poner texto");
+                        } else {
+                              var textoCifrado = salida.value;
+                              console.log("texto cifrado ", textoCifrado);
+                              console.log(decifrar);
+                              var texto = decifrar(textoCifrado);
+
+                              console.log("texto ", texto);
+                              entrada.value = texto;
+                              salida.value = "";
+                        }
+                  });
+
+                  btnCopiar.addEventListener("click" , () =>{ 
+                        var textoEntrada = entrada.value;
+                        
+
+
+                        if (textoEntrada === "") {
+                              var textoSalida = salida.value;
+                              if (textoSalida === "") {
+                                    alert("No se encontro Texto");
+                              }
+                              else {
+                                    var textoCopiar = salida.value;
+                                    copiarTexto(textoSalida);
+
+                              }
+                        } else {
+                              copiarTexto(textoEntrada);
+
+                        }    
+                  }); 
+                  
+
+                  // funciones ferchis
+                  function cambiarVocal(palabra) {
+                        console.log("palabra ", palabra);
+
+                        var letras = palabra.split(''); //fer
+                        //['f', 'e', 'r']
+                        console.log("letras ", letras);
+
+                        var llaves = {
+                              a: 'ai',
+                              e: 'enter',
+                              i: 'imes',
+                              o: 'ober',
+                              u: 'ufat'
+                        };
+
+                        const cifrado = letras.map( (letra) => {
+                              console.log("letra ", letra);
+                              return llaves[letra] ? llaves[letra] : letra;   // ['f', 'enter', 'r']
+                        }).join('');  // fenterr
+
+                        console.log("cifrado ", cifrado);
+                        return cifrado;
+                  }
+
+                  function decifrar(textoCifrado) {
+                        console.log("texto cifrado ", textoCifrado );
+
+                        var textoDecifrado = textoCifrado
+                              .replaceAll("ai","a")
+                              .replaceAll("enter","e")
+                              .replaceAll("imes","i")
+                              .replaceAll("ober","o")
+                              .replaceAll("ufat","u");
+                        
+                        console.log("textoDecifrado ", textoDecifrado);
+                        
+                        return textoDecifrado;
+                  }
+
+                  function copiarTexto(texto) {
+                        navigator.clipboard.writeText(texto)
+                              .then(function() {
+                                    alert("Texto copiado: " + texto);
+                              })
+                              .catch(function(error) {
+                                    alert("Error al copiar el texto: " + error);
+                              });
+                        
+                  }
+
+                  document.getElementById("myForm").addEventListener("submit", function(event) {
+                        // Realiza la validación del formulario aquí
+                        // Si el formulario no es válido, prevenimos el envío
+    
+                        event.preventDefault();
+                  });
+
+            </script>
+            <footer>
+                   <p class="copyright">&copy Encriptador y Desencriptador Ferch2023</p>
+            </footer>
+      </body>
+</html>
